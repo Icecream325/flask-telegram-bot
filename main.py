@@ -1,36 +1,35 @@
-from flask import Flask, request
-from telegram import Bot, Update
-from telegram.ext import CommandHandler, Dispatcher, Application
+from flask import Flask
+from telegram import Update
+from telegram.ext import Application, CommandHandler, ContextTypes
 
 import os
-import logging
 import asyncio
 
-TOKEN = os.getenv("BOT_TOKEN")  # Load from environment
+TOKEN = os.environ.get("BOT_TOKEN")
 
 app = Flask(__name__)
-bot = Bot(token=TOKEN)
 
 @app.route("/")
-def home():
-    return "Bot is running!"
+def index():
+    return "Bot is up and running!"
 
-@app.route("/start-bot")
+# This keeps the app alive and starts the bot
+@app.before_first_request
 def start_bot():
-    asyncio.run(start_polling())
-    return "Bot started!"
+    asyncio.create_task(run_bot())
 
-async def start_polling():
-    application = Application.builder().token(TOKEN).build()
+async def run_bot():
+    app_telegram = Application.builder().token(TOKEN).build()
 
-    async def start(update: Update, context):
-        await update.message.reply_text("Hello from Render!")
+    async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+        await update.message.reply_text("Hello from your Render bot!")
 
-    application.add_handler(CommandHandler("start", start))
-    await application.initialize()
-    await application.start()
-    await application.updater.start_polling()
-    await application.updater.idle()
+    app_telegram.add_handler(CommandHandler("start", start))
+
+    await app_telegram.initialize()
+    await app_telegram.start()
+    await app_telegram.updater.start_polling()
+    await app_telegram.updater.idle()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
