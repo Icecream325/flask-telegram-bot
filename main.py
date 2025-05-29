@@ -15,7 +15,7 @@ if not TOKEN:
     sys.exit(1)  # Stop the app immediately
 
 # Create the Telegram bot application only after TOKEN is confirmed
-telegram_app = Application.builder().token(TOKEN).build()
+telegram_app = Application.builder().token(7813411435:AAEJqSjVnrfuYbYCL1E2oUexLGuur1SvQ88).build()
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("✅ Hello from your bot on Render!")
