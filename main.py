@@ -7,7 +7,7 @@ import threading
 import asyncio
 
 app = Flask(__name__)
-TOKEN = os.environ.get("7864803802:AAEPld-Be4MlAKn1PReCfMFQLrfGBl60Jfg")
+TOKEN = os.environ.get("7813411435:AAEJqSjVnrfuYbYCL1E2oUexLGuur1SvQ88")
 
 # Create the Telegram bot app
 telegram_app = Application.builder().token(TOKEN).build()
