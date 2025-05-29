@@ -8,7 +8,7 @@ import asyncio
 import sys
 
 app = Flask(__name__)
-TOKEN = os.environ.get("7813411435:AAEJqSjVnrfuYbYCL1E2oUexLGuur1SvQ88")
+TOKEN = os.environ.get("BOT_TOKEN")
 
 if not TOKEN:
     print("❌ ERROR: BOT_TOKEN environment variable not set!")
