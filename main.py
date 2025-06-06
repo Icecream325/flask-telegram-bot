@@ -7,7 +7,7 @@ from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, InputFi
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, CallbackContext, MessageHandler, filters
 
 # === CONFIGURATION ===
-TOKEN = "7864803802:AAEPld-Be4MlAKn1PReCfMFQLrfGBl60Jfg"
+TOKEN = "7947169065:AAEhT2-4Bd97lFUkydG87-IFinCmnxcwIsg"
 ADMIN_IDS = [5652818493, 6821755959]  # Replace with actual admin IDs  # Replace with your Telegram ID
 USED_LINES_FILE = "used_lines.json"
 LOG_FILE = "logs.json"
